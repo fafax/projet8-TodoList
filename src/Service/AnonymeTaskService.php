@@ -20,17 +20,19 @@ class AnonymeTaskService
         $this->em = $em;
         $this->encoder = $encoder;
 
-        $this->anomymeUser= $userRepository->findOneBy(['username' => 'anonyme']);
+        $this->anomymeUser= $userRepository->findOneBy(['username' => User::getAnonyme()]);
 
 /* create user anonymous if don't exist */
 
         if($this->anomymeUser == NULL){
             $UserAnonime = new User();
-            $UserAnonime->setUsername('anonyme');
+            $UserAnonime->setUsername(User::getAnonyme());
             $UserAnonime->setEmail('anonyme@anonyme.fr');
-            $hash = $this->encoder->encodePassword($UserAnonime, "anonyme");
-            $UserAnonime->setPassword($hash);
             $UserAnonime->setRoles([]);
+
+            $hash = $this->encoder->encodePassword($UserAnonime, User::getAnonyme());
+            $UserAnonime->setPassword($hash);
+
             $this->em->persist($UserAnonime);
             $this->em->flush();
         }
@@ -40,7 +42,7 @@ class AnonymeTaskService
 
     public function checkTask(TaskRepository $taskRepository)
     {
-        $tasks = $taskRepository->findAll();
+        $tasks = $taskRepository->findBy(["user" => NULL]);
         foreach ($tasks as  $value){
             $this->setAnonymeTask($value);
          }
@@ -49,10 +51,8 @@ class AnonymeTaskService
 
     public function setAnonymeTask($task)
     {
-        if ($task->getUser() == NULL){
-            $task->setUser($this->anomymeUser);
-            $this->em->persist($task);
-            $this->em->flush();
-        }
+        $task->setUser($this->anomymeUser);
+        $this->em->persist($task);
+        $this->em->flush();
     }
 }
