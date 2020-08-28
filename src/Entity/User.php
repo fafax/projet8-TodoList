@@ -14,6 +14,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User implements UserInterface
 {
+
+private const ANONYME = 'anonyme';
+
+public static function getAnonyme(){
+    return self::ANONYME;
+}
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
