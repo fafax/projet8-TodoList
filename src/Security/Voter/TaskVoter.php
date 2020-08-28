@@ -18,7 +18,7 @@ class TaskVoter extends Voter
             && $subject instanceof \App\Entity\Task;
     }
 
-    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
+    protected function voteOnAttribute($attribute, $task, TokenInterface $token)
     {
 
         $user = $token->getUser();
@@ -30,12 +30,12 @@ class TaskVoter extends Voter
         // ... (check conditions and return true to grant permission) ...
         switch ($attribute) {
             case 'EDIT':
-                    if($subject->getUser()== $user){
+                    if($task->getUser()== $user){
                         return true;
                     }
                 break;
             case 'DELETE':
-                if($subject->getUser()== $user || ($subject->getUser()->getUsername()== 'anonyme' && in_array("ROLE_ADMIN",$user->getRoles()) )){
+                if($task->getUser()== $user || ($task->getUser()->getUsername()== 'anonyme' && in_array("ROLE_ADMIN",$user->getRoles()) )){
                     return true;
                 }
                 break;
