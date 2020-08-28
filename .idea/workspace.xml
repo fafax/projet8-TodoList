@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8685ff4a-ba53-4b31-b2f2-96f6064024b5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/DataTestFixtures.php" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/entity/TaskEntityTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +172,7 @@
       <updated>1598027378746</updated>
       <workItem from="1598027379854" duration="2905000" />
       <workItem from="1598168363382" duration="16789000" />
+      <workItem from="1598606743775" duration="4029000" />
     </task>
     <servers />
   </component>
@@ -188,10 +188,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1598213510237" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1598027377578">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1598606740363">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1598027377578" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1598606740363" />
     <state width="1877" height="340" key="GridCell.Tab.0.bottom" timestamp="1598171000731">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -240,9 +240,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1598171000731" />
-    <state x="719" y="227" key="NewPhpClassDialog" timestamp="1598213369651">
+    <state x="719" y="227" key="NewPhpClassDialog" timestamp="1598609218297">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="719" y="227" key="NewPhpClassDialog/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1598213369651" />
+    <state x="719" y="227" key="NewPhpClassDialog/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1598609218297" />
   </component>
 </project>
