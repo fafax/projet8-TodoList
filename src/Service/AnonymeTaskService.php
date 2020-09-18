@@ -20,17 +20,17 @@ class AnonymeTaskService
         $this->em = $em;
         $this->encoder = $encoder;
 
-        $this->anomymeUser= $userRepository->findOneBy(['username' => User::getAnonyme()]);
+        $this->anomymeUser= $userRepository->findOneBy(['username' => User::ANONYME]);
 
 /* create user anonymous if don't exist */
 
         if($this->anomymeUser == NULL){
             $UserAnonime = new User();
-            $UserAnonime->setUsername(User::getAnonyme());
-            $UserAnonime->setEmail('anonyme@anonyme.fr');
+            $UserAnonime->setUsername(User::ANONYME);
+            $UserAnonime->setEmail(User::EMAIL);
             $UserAnonime->setRoles([]);
 
-            $hash = $this->encoder->encodePassword($UserAnonime, User::getAnonyme());
+            $hash = $this->encoder->encodePassword($UserAnonime, User::ANONYME);
             $UserAnonime->setPassword($hash);
 
             $this->em->persist($UserAnonime);

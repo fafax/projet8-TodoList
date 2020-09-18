@@ -18,7 +18,7 @@ class DefaultControllerTest extends WebTestCase
       public function testIndexAuth()
       {
         $client = new AuthConnexionTest();
-        $client = $client->testConnexion();
+        $client = $client->testUserConnexion();
 
           $client->request('GET', '/');
           $this->assertEquals(200, $client->getResponse()->getStatusCode());

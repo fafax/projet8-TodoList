@@ -10,10 +10,26 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class AuthConnexionTest extends WebTestCase
 {
 
-    public function testConnexion(){
+    public function testUserConnexion(){
         $client = static::createClient();
         $userRepository = static::$container->get(UserRepository::class);
-        $testUser = $userRepository->findOneByEmail('fabienhamayon@gmail.fr');
+        $testUser = $userRepository->findOneByEmail('user@user.fr');
+        $client->loginUser($testUser);
+        return $client;
+    }
+
+    public function testAnonymeUserConnexion(){
+        $client = static::createClient();
+        $userRepository = static::$container->get(UserRepository::class);
+        $testUser = $userRepository->findOneByEmail('anonyme@anonyme.fr');
+        $client->loginUser($testUser);
+        return $client;
+    }
+
+    public function testAdminUserConnexion(){
+        $client = static::createClient();
+        $userRepository = static::$container->get(UserRepository::class);
+        $testUser = $userRepository->findOneByEmail('admin@admin.fr');
         $client->loginUser($testUser);
         return $client;
     }

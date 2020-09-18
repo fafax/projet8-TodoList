@@ -66,6 +66,13 @@ class DataFixtures extends Fixture
         $task2->setUser($User);
         $manager->persist($task2);
 
+        $task3 = new task();
+        $task3->setCreatedAt(new \Datetime());
+        $task3->setTitle('task user');
+        $task3->setContent('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.');
+        $task3->setUser($User);
+        $manager->persist($task3);
+
         $manager->flush();
     }
 }
