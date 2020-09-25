@@ -63,7 +63,7 @@ public const EMAIL = 'anonyme@anonyme.fr';
      * @ORM\Column(type="string", length=60, unique=true)
      * @Assert\NotBlank(message="Vous devez saisir une adresse email.")
      * @Assert\Email(message="Le format de l'adresse n'est pas correcte.")
-     *      * @Assert\Length(
+     * @Assert\Length(
      *      max = 60,
      *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
      *      allowEmptyString = false

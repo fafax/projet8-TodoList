@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Tests\controller;
+namespace App\Tests\Controller;
 
 
 use App\Repository\UserRepository;

@@ -1,9 +1,9 @@
 <?php
 
-namespace tests\controller;
+namespace tests\Controller;
 
 use App\Entity\Task;
-use App\Tests\controller\AuthConnexionTest;
+use App\Tests\Controller\AuthConnexionTest;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class TaskControllerTest extends WebTestCase
@@ -110,6 +110,24 @@ class TaskControllerTest extends WebTestCase
         $this->assertEquals(403, $client->getResponse()->getStatusCode());
     }
 
+    /* check Validate form edit task  */
+
+    public function testEditTask(){
+        $client = new AuthConnexionTest();
+        $client = $client->testUserConnexion();
+        $crawler = $client->request('GET', '/tasks/24/edit');
+        $form = $crawler->selectButton("Modifier")->form();
+        $this->assertSame(1, $crawler->filter('input[name="task[title]"]')->count());
+        $this->assertSame(1, $crawler->filter('textarea[name="task[content]"]')->count());
+        $form["task[title]"] = "modification titre";
+        $form["task[content]"] = "modification contenu";
+        $client->submit($form);
+        $this->assertEquals(302 ,$client->getResponse()->getStatusCode());
+        $crawler = $client->followRedirect();
+        $this->assertContains("Superbe ! La tâche a bien été modifiée.", $crawler->filter('div.alert.alert-success')->text());
+
+    }
+
     /* check Validate form delete task */
 
     public function testValidateDeleteTask(){
@@ -119,6 +137,8 @@ class TaskControllerTest extends WebTestCase
         $client->request('GET', '/tasks/24/delete');
 
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $crawler = $client->followRedirect();
+        $this->assertContains("Superbe ! La tâche a bien été supprimée.", $crawler->filter('div.alert.alert-success')->text());
     }
 
     /* check inValidate form delete task */
@@ -151,6 +171,28 @@ class TaskControllerTest extends WebTestCase
         $client->request('GET', '/tasks/23/delete');
 
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $crawler = $client->followRedirect();
+        $this->assertContains("Superbe ! La tâche a bien été supprimée.", $crawler->filter('div.alert.alert-success')->text());
+    }
+
+    /* check toggle task  */
+
+    public function testToggleTask(){
+        $client = new AuthConnexionTest();
+        $client = $client->testUserConnexion();
+        $client->request('GET', '/tasks/25/toggle');
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $crawler = $client->followRedirect();
+        $this->assertContains("Superbe ! La tâche task user a bien été marquée comme faite.", $crawler->filter('div.alert.alert-success')->text());
+    }
+
+    public function testYetToggleTask(){
+        $client = new AuthConnexionTest();
+        $client = $client->testUserConnexion();
+        $client->request('GET', '/tasks/25/toggle');
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $crawler = $client->followRedirect();
+        $this->assertContains("Superbe ! La tâche task user a bien été marquée comme non faite.", $crawler->filter('div.alert.alert-success')->text());
     }
 
 

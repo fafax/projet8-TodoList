@@ -1,9 +1,9 @@
 <?php
 
-namespace tests\controller;
+namespace tests\Controller;
 
 use App\Repository\UserRepository;
-use App\Tests\controller\AuthConnexionTest;
+use App\Tests\Controller\AuthConnexionTest;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DefaultControllerTest extends WebTestCase
