@@ -15,10 +15,10 @@ class TaskController extends AbstractController
     /**
      * @Route("/tasks", name="task_list")
      */
-    public function listActionTas(TaskRepository $taskRepository)
+    public function listActionTask(TaskRepository $taskRepository)
     {
         $tacks = $taskRepository->findAll();
-;       return $this->render('task/list.html.twig', ['tasks' => $tacks]);
+        return $this->render('task/list.html.twig', ['tasks' => $tacks]);
     }
 
     /**
@@ -26,7 +26,7 @@ class TaskController extends AbstractController
      */
     public function listTaskTerminate(TaskRepository $taskRepository)
     {
-        $tacks = $taskRepository->findBy(['isDone'=> 1]);
+        $tacks = $taskRepository->findBy(['isDone' => 1]);
         return $this->render('task/list.html.twig', ['tasks' => $tacks]);
     }
 
@@ -85,12 +85,11 @@ class TaskController extends AbstractController
     {
         $task->toggle(!$task->isDone());
         $this->getDoctrine()->getManager()->flush();
-        if($task->isDone()){
+        if ($task->isDone()) {
             $this->addFlash('success', sprintf('La tâche %s a bien été marquée comme faite.', $task->getTitle()));
-        }else{
+        } else {
             $this->addFlash('success', sprintf('La tâche %s a bien été marquée comme non faite.', $task->getTitle()));
         }
-
 
         return $this->redirectToRoute('task_list');
     }

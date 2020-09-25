@@ -15,11 +15,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User implements UserInterface
 {
 
-private const ANONYME = 'anonyme';
+public const ANONYME = 'anonyme';
+public const EMAIL = 'anonyme@anonyme.fr';
 
-public static function getAnonyme(){
-    return self::ANONYME;
-}
+
 
     /**
      * @ORM\Id()
@@ -31,6 +30,13 @@ public static function getAnonyme(){
     /**
      * @ORM\Column(type="string", length=25, unique=true)
      * @Assert\NotBlank(message="Vous devez saisir un nom d'utilisateur.")
+     *      * @Assert\Length(
+     *      min = 1,
+     *      max = 25,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     * )
      */
     private $username;
 
@@ -41,7 +47,15 @@ public static function getAnonyme(){
 
     /**
      * @var string The hashed password
+     * @Assert\NotBlank(message="Vous devez saisir un mot de passe.")
      * @ORM\Column(type="string", length=64)
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 64,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     * )
      */
     private $password;
 
@@ -49,6 +63,11 @@ public static function getAnonyme(){
      * @ORM\Column(type="string", length=60, unique=true)
      * @Assert\NotBlank(message="Vous devez saisir une adresse email.")
      * @Assert\Email(message="Le format de l'adresse n'est pas correcte.")
+     * @Assert\Length(
+     *      max = 60,
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     * )
      */
     private $email;
 
