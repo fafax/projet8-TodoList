@@ -15,10 +15,19 @@ class TaskController extends AbstractController
     /**
      * @Route("/tasks", name="task_list")
      */
-    public function listActionTas(TaskRepository $taskRepository)
+    public function listActionTask(TaskRepository $taskRepository)
     {
-        $tacks = $taskRepository->findAll()
-;        return $this->render('task/list.html.twig', ['tasks' => $tacks]);
+        $tacks = $taskRepository->findAll();
+        return $this->render('task/list.html.twig', ['tasks' => $tacks]);
+    }
+
+    /**
+     * @Route("/tasks/terminate", name="task_list_terminate")
+     */
+    public function listTaskTerminate(TaskRepository $taskRepository)
+    {
+        $tacks = $taskRepository->findBy(['isDone' => 1]);
+        return $this->render('task/list.html.twig', ['tasks' => $tacks]);
     }
 
     /**
@@ -33,7 +42,7 @@ class TaskController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-
+            $task = $task->setUser($this->getUser());
             $em->persist($task);
             $em->flush();
 
@@ -50,6 +59,7 @@ class TaskController extends AbstractController
      */
     public function editAction(Task $task, Request $request)
     {
+        $this->denyAccessUnlessGranted('EDIT', $task);
         $form = $this->createForm(TaskType::class, $task);
 
         $form->handleRequest($request);
@@ -75,8 +85,11 @@ class TaskController extends AbstractController
     {
         $task->toggle(!$task->isDone());
         $this->getDoctrine()->getManager()->flush();
-
-        $this->addFlash('success', sprintf('La tâche %s a bien été marquée comme faite.', $task->getTitle()));
+        if ($task->isDone()) {
+            $this->addFlash('success', sprintf('La tâche %s a bien été marquée comme faite.', $task->getTitle()));
+        } else {
+            $this->addFlash('success', sprintf('La tâche %s a bien été marquée comme non faite.', $task->getTitle()));
+        }
 
         return $this->redirectToRoute('task_list');
     }
@@ -86,6 +99,7 @@ class TaskController extends AbstractController
      */
     public function deleteTaskAction(Task $task)
     {
+        $this->denyAccessUnlessGranted('DELETE', $task);
         $em = $this->getDoctrine()->getManager();
         $em->remove($task);
         $em->flush();
