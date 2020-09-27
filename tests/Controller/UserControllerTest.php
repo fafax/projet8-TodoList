@@ -100,8 +100,9 @@ class UserControllerTest extends WebTestCase
         $form["user[password][first]"] = "mot de passe";
         $form["user[password][second]"] = "autre mot de passe";
         $form["user[email]"] = "test@test.fr";
-        $client->submit($form);
+        $crawler = $client->submit($form);
         $this->assertEquals(200 ,$client->getResponse()->getStatusCode());
+        $this->assertContains("Les deux mots de passe doivent correspondre.", $crawler->filter('.form-error-message')->text());
 
     }
 

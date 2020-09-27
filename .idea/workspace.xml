@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8685ff4a-ba53-4b31-b2f2-96f6064024b5" name="Default Changelist" comment="">
-
+      <change afterPath="$PROJECT_DIR$/ressource p8/contribution.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +30,6 @@
       <path value="$PROJECT_DIR$/vendor/psr/cache" />
       <path value="$PROJECT_DIR$/vendor/webimpress/safe-writer" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
-      <path value="$PROJECT_DIR$/vendor/ocramius/package-versions" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
@@ -88,7 +89,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/serializer" />
       <path value="$PROJECT_DIR$/vendor/symfony/mailer" />
       <path value="$PROJECT_DIR$/vendor/symfony/config" />
-      <path value="$PROJECT_DIR$/vendor/symfony/inflector" />
       <path value="$PROJECT_DIR$/vendor/symfony/web-link" />
       <path value="$PROJECT_DIR$/vendor/symfony/framework-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
@@ -196,7 +196,9 @@
       <workItem from="1599833497751" duration="6000" />
       <workItem from="1600414611816" duration="5363000" />
       <workItem from="1600887556303" duration="600000" />
-
+      <workItem from="1601040059318" duration="19031000" />
+      <workItem from="1601104911538" duration="7376000" />
+      <workItem from="1601192675300" duration="6801000" />
     </task>
     <servers />
   </component>
@@ -208,10 +210,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="622" y="96" key="#AuthConnexionTest.testConnexion/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1599203296790" />
-    <state x="726" y="310" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601046127508">
+    <state x="726" y="310" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601074215300">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="726" y="310" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1601046127508" />
+    <state x="726" y="310" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1601074215300" />
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598218653509">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -220,7 +222,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1601048352427" />
-
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1601065128313">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1601065128313" />
     <state width="1877" height="340" key="GridCell.Tab.0.bottom" timestamp="1598171000731">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
