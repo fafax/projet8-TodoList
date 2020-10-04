@@ -28,6 +28,7 @@
         "symfony/twig-pack": "*",
         "symfony/validator": "5.1.*",
         "symfony/web-link": "5.1.*",
+        "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "5.1.*"
     },
     "require-dev": {
@@ -40,6 +41,7 @@
     },
     "config": {
         "optimize-autoloader": true,
+        "classmap-authoritative": true,
         "preferred-install": {
             "*": "dist"
         },
