@@ -12,8 +12,8 @@ class UserEntityTest extends KernelTestCase
 {
 
 
-
-    public function setUser(){
+    public function setUser()
+    {
         $User = new User();
         $User->setUsername('user');
         $User->setEmail('user@user.fr');
@@ -22,13 +22,15 @@ class UserEntityTest extends KernelTestCase
         return $User;
     }
 
-    public function testValidateUser(){
+    public function testValidateUser()
+    {
         self::bootKernel();
         $error = self::$container->get('validator')->validate($this->setUser());
         $this->assertCount(0, $error);
     }
 
-    public function testInvalidateUsernameUser(){
+    public function testInvalidateUsernameUser()
+    {
         $User = new User();
         $User->setEmail('user@user.fr');
         $User->setPassword("test");
@@ -38,7 +40,8 @@ class UserEntityTest extends KernelTestCase
         $this->assertCount(1, $error);
     }
 
-    public function testInvalidateEmailUser(){
+    public function testInvalidateEmailUser()
+    {
         $User = new User();
         $User->setUsername('user');
         $User->setPassword("test");
@@ -48,7 +51,8 @@ class UserEntityTest extends KernelTestCase
         $this->assertCount(1, $error);
     }
 
-    public function testInvalidatePWDUser(){
+    public function testInvalidatePWDUser()
+    {
         $User = new User();
         $User->setUsername('user');
         $User->setEmail('user@user.fr');
@@ -58,7 +62,8 @@ class UserEntityTest extends KernelTestCase
         $this->assertCount(1, $error);
     }
 
-    public function testInvalidateEmailFormateUser(){
+    public function testInvalidateEmailFormateUser()
+    {
         $User = new User();
         $User->setUsername('user');
         $User->setEmail('useruser.fr');
@@ -68,7 +73,9 @@ class UserEntityTest extends KernelTestCase
         $error = self::$container->get('validator')->validate($User);
         $this->assertCount(1, $error);
     }
-    public function testInvalidatePWDFormateUser(){
+
+    public function testInvalidatePWDFormateUser()
+    {
         $User = new User();
         $User->setUsername('user');
         $User->setEmail('user@user.fr');
@@ -79,7 +86,8 @@ class UserEntityTest extends KernelTestCase
         $this->assertCount(1, $error);
     }
 
-    public function testInvalidateEmailLimiteUser(){
+    public function testInvalidateEmailLimiteUser()
+    {
         $User = new User();
         $User->setUsername('user');
         $User->setEmail('useruseruseruseruseruseruseruseruseruseruseruseruseruseruseruseruseruseruseruser@user.fr');
@@ -90,7 +98,8 @@ class UserEntityTest extends KernelTestCase
         $this->assertCount(1, $error);
     }
 
-    public function testInvalidateUsernameLimitUser(){
+    public function testInvalidateUsernameLimitUser()
+    {
         $User = new User();
         $User->setUsername('useruseruseruseruseruseruseruser');
         $User->setEmail('user@user.fr');
@@ -100,7 +109,6 @@ class UserEntityTest extends KernelTestCase
         $error = self::$container->get('validator')->validate($User);
         $this->assertCount(1, $error);
     }
-
 
 
 }

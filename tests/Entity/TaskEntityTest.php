@@ -11,7 +11,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class TaskEntityTest extends KernelTestCase
 {
 
-    public function setTaskAnonyme(){
+    public function setTaskAnonyme()
+    {
 
         $task = new Task();
         $task->setTitle("task 1");
@@ -20,7 +21,8 @@ class TaskEntityTest extends KernelTestCase
         return $task;
     }
 
-    public function setTaskUser(){
+    public function setTaskUser()
+    {
         $User = new User();
         $User->setUsername('user');
         $User->setEmail('user@user.fr');
@@ -35,13 +37,15 @@ class TaskEntityTest extends KernelTestCase
         return $task;
     }
 
-    public function testValidateTaskAnonyme(){
+    public function testValidateTaskAnonyme()
+    {
         self::bootKernel();
         $error = self::$container->get('validator')->validate($this->setTaskAnonyme());
         $this->assertCount(0, $error);
     }
 
-    public function testInvalidateTitleTaskAnonyme(){
+    public function testInvalidateTitleTaskAnonyme()
+    {
         $task = new Task();
         $task->setContent("Je suis le contenue de la task");
         $task->setCreatedAt(new \DateTime());
@@ -50,7 +54,8 @@ class TaskEntityTest extends KernelTestCase
         $this->assertCount(1, $error);
     }
 
-    public function testInvalidateContentTaskAnonyme(){
+    public function testInvalidateContentTaskAnonyme()
+    {
         $task = new Task();
         $task->setTitle('titre');
         $task->setCreatedAt(new \DateTime());
@@ -59,7 +64,8 @@ class TaskEntityTest extends KernelTestCase
         $this->assertCount(1, $error);
     }
 
-    public function testValidateTaskUser(){
+    public function testValidateTaskUser()
+    {
         self::bootKernel();
         $error = self::$container->get('validator')->validate($this->setTaskUser());
         $this->assertCount(0, $error);

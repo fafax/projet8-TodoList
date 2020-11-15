@@ -1,6 +1,7 @@
 <?php
 
 namespace tests\Controller;
+
 use App\Tests\Controller\AuthConnexionTest;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -15,15 +16,15 @@ class UserControllerTest extends WebTestCase
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
 
-     public function testCreateUser()
-       {
-           $client = new AuthConnexionTest();
-           $client = $client->testAdminUserConnexion();
+    public function testCreateUser()
+    {
+        $client = new AuthConnexionTest();
+        $client = $client->testAdminUserConnexion();
 
-           $client->request('GET', '/users/create');
+        $client->request('GET', '/users/create');
 
-           $this->assertEquals(200, $client->getResponse()->getStatusCode());
-       }
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
 
     public function testListUsersforRoleUser()
     {
@@ -80,10 +81,11 @@ class UserControllerTest extends WebTestCase
         $form["user[password][second]"] = "mot de passe";
         $form["user[email]"] = "test@test.fr";
         $client->submit($form);
-        $this->assertEquals(302 ,$client->getResponse()->getStatusCode());
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $crawler = $client->followRedirect();
         $this->assertContains("Superbe ! L'utilisateur a bien été ajouté.", $crawler->filter('div.alert.alert-success')->text());
     }
+
     public function testCreateUserFormDifferentPWD()
     {
         $client = new AuthConnexionTest();
@@ -101,7 +103,7 @@ class UserControllerTest extends WebTestCase
         $form["user[password][second]"] = "autre mot de passe";
         $form["user[email]"] = "test@test.fr";
         $crawler = $client->submit($form);
-        $this->assertEquals(200 ,$client->getResponse()->getStatusCode());
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertContains("Les deux mots de passe doivent correspondre.", $crawler->filter('.form-error-message')->text());
 
     }

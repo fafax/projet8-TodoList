@@ -20,11 +20,11 @@ class AnonymeTaskService
         $this->em = $em;
         $this->encoder = $encoder;
 
-        $this->anomymeUser= $userRepository->findOneBy(['username' => User::ANONYME]);
+        $this->anomymeUser = $userRepository->findOneBy(['username' => User::ANONYME]);
 
-/* create user anonymous if don't exist */
+        /* create user anonymous if don't exist */
 
-        if($this->anomymeUser == NULL){
+        if ($this->anomymeUser == NULL) {
             $UserAnonime = new User();
             $UserAnonime->setUsername(User::ANONYME);
             $UserAnonime->setEmail(User::EMAIL);
@@ -43,9 +43,9 @@ class AnonymeTaskService
     public function checkTask(TaskRepository $taskRepository)
     {
         $tasks = $taskRepository->findBy(["user" => NULL]);
-        foreach ($tasks as  $value){
+        foreach ($tasks as $value) {
             $this->setAnonymeTask($value);
-         }
+        }
 
     }
 

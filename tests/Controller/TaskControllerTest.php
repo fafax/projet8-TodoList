@@ -19,38 +19,41 @@ class TaskControllerTest extends WebTestCase
         $this->assertEquals('http://localhost/login', $client->getRequest()->getUri());
     }
 
-     public function testTasksAuth()
-       {
-           $client = new AuthConnexionTest();
-           $client = $client->testUserConnexion();
+    public function testTasksAuth()
+    {
+        $client = new AuthConnexionTest();
+        $client = $client->testUserConnexion();
 
-           $client->request('GET', '/tasks');
-           $this->assertEquals(200, $client->getResponse()->getStatusCode());
-       }
+        $client->request('GET', '/tasks');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
+
     /* check validate form with the good value */
 
-       public function testCreateTask(){
-           $client = new AuthConnexionTest();
-           $client = $client->testUserConnexion();
+    public function testCreateTask()
+    {
+        $client = new AuthConnexionTest();
+        $client = $client->testUserConnexion();
 
 
-           $crawler = $client->request('GET', '/tasks/create');
-           $form = $crawler->selectButton('Ajouter')->form();
+        $crawler = $client->request('GET', '/tasks/create');
+        $form = $crawler->selectButton('Ajouter')->form();
 
-           // set some values
-           $form['task[title]'] = 'titre';
-           $form['task[content]'] = 'texte';
+        // set some values
+        $form['task[title]'] = 'titre';
+        $form['task[content]'] = 'texte';
 
-            // submit the form
-           $crawler = $client->submit($form);
+        // submit the form
+        $crawler = $client->submit($form);
 
-           $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
 
-       }
+    }
 
     /* check no validate form if don't have a content */
 
-    public function testInvalidateTitleCreateTask(){
+    public function testInvalidateTitleCreateTask()
+    {
         $client = new AuthConnexionTest();
         $client = $client->testUserConnexion();
 
@@ -70,7 +73,8 @@ class TaskControllerTest extends WebTestCase
 
     /* check no validate form if don't have a title */
 
-    public function testInvalidateTextCreateTask(){
+    public function testInvalidateTextCreateTask()
+    {
         $client = new AuthConnexionTest();
         $client = $client->testUserConnexion();
 
@@ -89,19 +93,21 @@ class TaskControllerTest extends WebTestCase
 
     /* check validate form after edit task */
 
-    public function testvalidateEditTask(){
+    public function testvalidateEditTask()
+    {
         $client = new AuthConnexionTest();
         $client = $client->testUserConnexion();
 
 
-       $client->request('GET', '/tasks/24/edit');
+        $client->request('GET', '/tasks/24/edit');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
 
     /* check inValidate form after edit task */
 
-    public function testInvalidateEditTask(){
+    public function testInvalidateEditTask()
+    {
         $client = new AuthConnexionTest();
         $client = $client->testAnonymeUserConnexion();
 
@@ -112,7 +118,8 @@ class TaskControllerTest extends WebTestCase
 
     /* check Validate form edit task  */
 
-    public function testEditTask(){
+    public function testEditTask()
+    {
         $client = new AuthConnexionTest();
         $client = $client->testUserConnexion();
         $crawler = $client->request('GET', '/tasks/24/edit');
@@ -122,7 +129,7 @@ class TaskControllerTest extends WebTestCase
         $form["task[title]"] = "modification titre";
         $form["task[content]"] = "modification contenu";
         $client->submit($form);
-        $this->assertEquals(302 ,$client->getResponse()->getStatusCode());
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $crawler = $client->followRedirect();
         $this->assertContains("Superbe ! La tâche a bien été modifiée.", $crawler->filter('div.alert.alert-success')->text());
 
@@ -130,7 +137,8 @@ class TaskControllerTest extends WebTestCase
 
     /* check Validate form delete task */
 
-    public function testValidateDeleteTask(){
+    public function testValidateDeleteTask()
+    {
         $client = new AuthConnexionTest();
         $client = $client->testUserConnexion();
 
@@ -143,7 +151,8 @@ class TaskControllerTest extends WebTestCase
 
     /* check inValidate form delete task */
 
-    public function testInValidateDeleteTask(){
+    public function testInValidateDeleteTask()
+    {
         $client = new AuthConnexionTest();
         $client = $client->testAnonymeUserConnexion();
 
@@ -154,7 +163,8 @@ class TaskControllerTest extends WebTestCase
 
     /* check inValidate form delete task already */
 
-    public function testInValidateDeleteTaskAlreadyDelete(){
+    public function testInValidateDeleteTaskAlreadyDelete()
+    {
         $client = new AuthConnexionTest();
         $client = $client->testUserConnexion();
 
@@ -165,7 +175,8 @@ class TaskControllerTest extends WebTestCase
 
     /* check Validate form delete anonyme task  */
 
-    public function testValidateDeleteAnonymeTask(){
+    public function testValidateDeleteAnonymeTask()
+    {
         $client = new AuthConnexionTest();
         $client = $client->testAdminUserConnexion();
         $client->request('GET', '/tasks/23/delete');
@@ -177,7 +188,8 @@ class TaskControllerTest extends WebTestCase
 
     /* check toggle task  */
 
-    public function testToggleTask(){
+    public function testToggleTask()
+    {
         $client = new AuthConnexionTest();
         $client = $client->testUserConnexion();
         $client->request('GET', '/tasks/25/toggle');
@@ -186,7 +198,8 @@ class TaskControllerTest extends WebTestCase
         $this->assertContains("Superbe ! La tâche task user a bien été marquée comme faite.", $crawler->filter('div.alert.alert-success')->text());
     }
 
-    public function testYetToggleTask(){
+    public function testYetToggleTask()
+    {
         $client = new AuthConnexionTest();
         $client = $client->testUserConnexion();
         $client->request('GET', '/tasks/25/toggle');
