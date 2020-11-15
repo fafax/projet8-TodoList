@@ -28,6 +28,7 @@
                         <td>{{ user.email }}</td>
                         <td>
                             <a href="{{ path('user_edit', {'id' : user.id}) }}" class="btn btn-success btn-sm">Edit</a>
+                            <a href="{{ path('user_change_password', {'id' : user.id}) }}" class="btn btn-success btn-sm">Modification PWD</a>
                         </td>
                     </tr>
                 {% endfor %}

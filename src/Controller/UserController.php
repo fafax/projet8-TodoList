@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\ChangePasswordType;
+use App\Form\ChangeUserType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -57,15 +59,13 @@ class UserController extends AbstractController
      * @Route("/users/{id}/edit", name="user_edit")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function editAction(User $user, Request $request, UserPasswordEncoderInterface $encoder)
+    public function editAction(User $user, Request $request)
     {
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(ChangeUserType::class, $user);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $password = $encoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($password);
 
             $this->getDoctrine()->getManager()->flush();
 
@@ -75,5 +75,29 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/edit.html.twig', ['form' => $form->createView(), 'user' => $user]);
+    }
+
+    /**
+     * @Route("/users/{id}/chagePassword", name="user_change_password")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function changePassword(User $user, Request $request, UserPasswordEncoderInterface $encoder)
+    {
+        $form = $this->createForm(ChangePasswordType::class, $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $password = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($password);
+
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', "Le mot de pass de l'utilisateur a bien été modifié");
+
+            return $this->redirectToRoute('user_list');
+        }
+
+        return $this->render('user/changePassword.html.twig', ['form' => $form->createView(), 'user' => $user]);
     }
 }
