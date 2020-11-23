@@ -51,8 +51,14 @@ class AnonymeTaskService
 
     public function setAnonymeTask($task)
     {
-        $task->setUser($this->anomymeUser);
-        $this->em->persist($task);
-        $this->em->flush();
+        try {
+            $task->setUser($this->anomymeUser);
+            $this->em->persist($task);
+            $this->em->flush();
+        } catch (\Exception $e) {
+            $errorMessage = $e->getMessage();
+        }
+
+
     }
 }

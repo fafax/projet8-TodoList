@@ -63,6 +63,16 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 
 ``` php bin/phpunit ```
 
+## Qualité du code
+
+* La Vérification de la qualité du code a été réalisé en utilisant la plateforme [code climate](https://codeclimate.com/).
+Voici la lettre optenue pour la qualité du code [![Maintainability](https://api.codeclimate.com/v1/badges/bcb2fc5b385339703abb/maintainability)](https://codeclimate.com/github/fafax/projet8-TodoList/maintainability)
+
+
+## Evolution version symfony
+
+Ce projet symfony est la version 5.1, cette version sera supporté jusqu'au mois de janvier 2021. Afin d'améliorer et de bénéficier des dernières nouvautés ce projet suivra les versions 5.2 et 5.3 jusqu'a la LST 5.4. [Documentation Symfony](https://symfony.com/releases).
+
 ## Me suivre
 
 - Author - [Fabien HAMAYON](https://www.linkedin.com/in/fabien-hamayon-2b072698/)
