@@ -15,9 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User implements UserInterface
 {
 
-public const ANONYME = 'anonyme';
-public const EMAIL = 'anonyme@anonyme.fr';
-
+    public const ANONYME = 'anonyme';
+    public const EMAIL = 'anonyme@anonyme.fr';
 
 
     /**
@@ -93,7 +92,7 @@ public const EMAIL = 'anonyme@anonyme.fr';
      */
     public function getUsername(): string
     {
-        return (string) $this->username;
+        return (string)$this->username;
     }
 
     public function setUsername(string $username): self
@@ -125,7 +124,7 @@ public const EMAIL = 'anonyme@anonyme.fr';
      */
     public function getPassword(): string
     {
-        return (string) $this->password;
+        return (string)$this->password;
     }
 
     public function setPassword(string $password): self

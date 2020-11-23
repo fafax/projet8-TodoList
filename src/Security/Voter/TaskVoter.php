@@ -28,12 +28,12 @@ class TaskVoter extends Voter
         // ... (check conditions and return true to grant permission) ...
         switch ($attribute) {
             case 'EDIT':
-                    if($task->getUser()=== $user){
-                        return true;
-                    }
+                if ($task->getUser() === $user) {
+                    return true;
+                }
                 break;
             case 'DELETE':
-                if($task->getUser()=== $user || ($task->getUser() instanceof User && $task->getUser()->getUsername()=== User::ANONYME && in_array("ROLE_ADMIN",$user->getRoles()) )){
+                if ($task->getUser() === $user || ($task->getUser() instanceof User && $task->getUser()->getUsername() === User::ANONYME && in_array("ROLE_ADMIN", $user->getRoles()))) {
                     return true;
                 }
                 break;

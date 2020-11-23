@@ -44,3 +44,4 @@ git commit -m "Description de l'evolution ou de la modification"
 Vos évolutions ne doivent pas changer la lettre de la qualité du code [![Maintainability](https://api.codeclimate.com/v1/badges/bcb2fc5b385339703abb/maintainability)](https://codeclimate.com/github/fafax/projet8-TodoList/maintainability)
 
 * Puis proposer votre développement à l'aide d'une pull request
+

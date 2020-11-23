@@ -10,7 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class AuthConnexionTest extends WebTestCase
 {
 
-    public function testUserConnexion(){
+    public function testUserConnexion()
+    {
         $client = static::createClient();
         $userRepository = static::$container->get(UserRepository::class);
         $testUser = $userRepository->findOneByEmail('user@user.fr');
@@ -18,7 +19,8 @@ class AuthConnexionTest extends WebTestCase
         return $client;
     }
 
-    public function testAnonymeUserConnexion(){
+    public function testAnonymeUserConnexion()
+    {
         $client = static::createClient();
         $userRepository = static::$container->get(UserRepository::class);
         $testUser = $userRepository->findOneByEmail('anonyme@anonyme.fr');
@@ -26,7 +28,8 @@ class AuthConnexionTest extends WebTestCase
         return $client;
     }
 
-    public function testAdminUserConnexion(){
+    public function testAdminUserConnexion()
+    {
         $client = static::createClient();
         $userRepository = static::$container->get(UserRepository::class);
         $testUser = $userRepository->findOneByEmail('admin@admin.fr');

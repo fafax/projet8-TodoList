@@ -18,8 +18,8 @@
              <link rel="stylesheet" href="/build/app.css"> -->
     {% endblock %}
 
-{#    <!-- Bootstrap Core CSS -->#}
-{#    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">#}
+    {#    <!-- Bootstrap Core CSS -->#}
+    {#    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">#}
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -36,7 +36,7 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="{{ path('homepage') }}">To Do List app</a>
 
-            <img src="{{ asset('img/Logo_OpenClassrooms.png') }}" alt="OpenClassrooms" />
+            <img src="{{ asset('img/Logo_OpenClassrooms.png') }}" alt="OpenClassrooms"/>
         </div>
     </div>
 </nav>
@@ -45,7 +45,7 @@
 <div class="container">
     <div class="row">
         {% if is_granted('ROLE_ADMIN') %}
-         <a href="{{ path('user_create') }}" class="btn btn-primary">Créer un utilisateur</a>
+            <a href="{{ path('user_create') }}" class="btn btn-primary">Créer un utilisateur</a>
         {% endif %}
         {% if app.user %}
             <a href="{{ path('logout') }}" class="pull-right btn btn-danger">Se déconnecter</a>
@@ -71,11 +71,12 @@
             {% endfor %}
 
             {% block header_title %}{% endblock %}
-            {% block header_img %}<img class="slide-image" src="{{ asset('img/todolist_homepage.jpg') }}" alt="todo list">{% endblock %}
+            {% block header_img %}<img class="slide-image" src="{{ asset('img/todolist_homepage.jpg') }}"
+                                       alt="todo list">{% endblock %}
         </div>
     </div>
 
-    <br />
+    <br/>
 
     <div class="row">
         <div class="col-md-12">

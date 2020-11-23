@@ -1,6 +1,7 @@
 <?php
 
 namespace tests\Service;
+
 use App\Entity\Task;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
